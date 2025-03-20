@@ -1,24 +1,49 @@
 body {
     font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
 }
 
-table {
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid black;
     padding: 10px;
-    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-th {
-    background-color: #f4f4f4;
-}
-
-.delete-btn {
-    color: red;
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.enquiries {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.enquiry {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.enquiry:last-child {
+    border-bottom: none;
 }
