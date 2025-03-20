@@ -12,6 +12,15 @@ document.getElementById("enquiryForm").addEventListener("submit", function(event
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
     })
+        async function loadGoogleSheetCSV() {
+    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRqA5Utyz2ItcgUnMgWppHqIBpEYBW6Ia0vsJst5mBSTpOh_WSp7eyv4K2Ew2RSXS9Q6c08m8YHpqto/pub?output=csv"); // Replace with your Google Sheet CSV URL
+    const data = await response.text();
+    displayData(data);
+}
+
+// Reuse the same `displayData()` function from above
+document.addEventListener("DOMContentLoaded", loadGoogleSheetCSV);
+
     .then(response => response.text())
     .then(result => {
         alert("Enquiry submitted successfully!");
