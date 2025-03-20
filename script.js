@@ -7,7 +7,7 @@ document.getElementById("enquiryForm").addEventListener("submit", function(event
 
     let data = { name, email, message };
 
-    fetch("YOUR_GOOGLE_SCRIPT_DEPLOYMENT_URL", {  // Replace this
+    fetch("https://script.google.com/macros/s/AKfycbwMvQgINJznMRo2NOa1ahGPANxjClgo0Md4bqFbPIYNAxKYARwmdtSafnHI-zP3s6G0iQ/exec", {  // Replace this
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
