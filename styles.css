@@ -1,57 +1,39 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
     background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .container {
+    max-width: 400px;
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
-input, textarea {
+input, textarea, button {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-textarea {
-    height: 100px;
-    resize: none;
 }
 
 button {
-    margin-top: 15px;
-    padding: 10px;
-    border: none;
     background-color: #28a745;
     color: white;
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 button:hover {
     background-color: #218838;
+}
+
+.output {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
 }
