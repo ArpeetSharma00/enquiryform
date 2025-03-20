@@ -11,7 +11,7 @@ body {
 }
 
 /* Form Container */
-form {
+.container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -70,7 +70,7 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 400px) {
-    form {
+    .container {
         width: 90%;
     }
 }
