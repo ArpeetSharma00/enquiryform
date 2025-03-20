@@ -4,26 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enquiry Form</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h2>Enquiry Form</h2>
+    <form action="submit.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
 
-    <div class="container">
-        <h2>Enquiry Form</h2>
-        <form id="enquiryForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
 
-        <div class="output" id="output">
-            <h3>Previous Enquiries:</h3>
-            <div id="enquiryList"></div>
-        </div>
-    </div>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
 
-    <script src="script.js"></script>
-
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
