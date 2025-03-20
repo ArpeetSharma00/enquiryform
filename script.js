@@ -22,7 +22,8 @@ document.getElementById("enquiryForm").addEventListener("submit", function(event
 });
 
 function loadEnquiries() {
-    fetch("YOUR_GOOGLE_SHEET_PUBLIC_URL") // Replace with your Google Sheets public CSV URL
+    fetch("https://docs.google.com/spreadsheets/d/1Og5z-xy4tpvDjS9axcMdjS74Jxb0s6Fx5yEsKGnbPAQ/gviz/tq?tqx=out:csv
+") // Replace with your Google Sheets public CSV URL
     .then(response => response.text())
     .then(csvData => {
         let rows = csvData.split("\n").slice(1);  // Skip headers
