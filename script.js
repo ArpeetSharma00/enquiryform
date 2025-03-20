@@ -7,7 +7,7 @@ document.getElementById("enquiryForm").addEventListener("submit", function(event
 
     let data = { name, email, message };
 
-    fetch("https://script.google.com/macros/s/AKfycbw3ckGvfABTpPSLiFB_QM-F2o5T8OOcMHMHCIu4YImugaMbxnmTN9KL1okZh8nUlMHIbw/exec", {  // Replace with your Web App URL
+    fetch("https://script.google.com/macros/s/AKfycbwyxuzosEJRtXAH64Ka5rHDYpHNo19lgRygY3vX9mOrjM2AKkOYXbCctTpimT1E23PwIg/exec", {  // Replace with your Web App URL
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
