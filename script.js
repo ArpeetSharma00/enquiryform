@@ -1,49 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-    loadEnquiries();
+document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-    document.getElementById("enquiry-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        submitForm();
-    });
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    let data = { name, email, message };
+
+    fetch("YOUR_GOOGLE_SCRIPT_DEPLOYMENT_URL", {  // Replace with your Web App URL
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert("Enquiry submitted successfully!");
+        document.getElementById("enquiryForm").reset();
+        loadEnquiries();  // Fetch latest enquiries
+    })
+    .catch(error => console.error("Error:", error));
 });
 
-function submitForm() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var message = document.getElementById("message").value;
-
-    google.script.run.withSuccessHandler(updateTable).submitEnquiry(name, email, message);
-    
-    document.getElementById("enquiry-form").reset();
-}
-
-function updateTable(data) {
-    var table = document.getElementById("enquiry-table");
-    table.innerHTML = "<tr><th>Date</th><th>Name</th><th>Email</th><th>Message</th><th>Action</th></tr>";
-    data.forEach((row, index) => {
-        var tr = document.createElement("tr");
-        row.forEach(cell => {
-            var td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
-
-        var deleteTd = document.createElement("td");
-        var deleteBtn = document.createElement("span");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.className = "delete-btn";
-        deleteBtn.onclick = function() { deleteEnquiry(index); };
-        deleteTd.appendChild(deleteBtn);
-        tr.appendChild(deleteTd);
-
-        table.appendChild(tr);
-    });
-}
-
-function deleteEnquiry(index) {
-    google.script.run.withSuccessHandler(updateTable).deleteEnquiry(index);
-}
-
 function loadEnquiries() {
-    google.script.run.withSuccessHandler(updateTable).getEnquiries();
+    fetch("YOUR_GOOGLE_SHEET_PUBLIC_URL") // Replace with your Google Sheets public CSV URL
+    .then(response => response.text())
+    .then(csvData => {
+        let rows = csvData.split("\n").slice(1);  // Skip headers
+        let enquiryList = document.getElementById("enquiryList");
+        enquiryList.innerHTML = "";
+
+        rows.forEach(row => {
+            let columns = row.split(",");
+            if (columns.length < 3) return;
+
+            let div = document.createElement("div");
+            div.classList.add("enquiry");
+            div.innerHTML = `
+                <strong>${columns[0]}</strong> (${columns[1]})
+                <p>${columns[2]}</p>
+            `;
+            enquiryList.appendChild(div);
+        });
+    })
+    .catch(error => console.error("Error loading enquiries:", error));
 }
+
+// Load existing enquiries on page load
+document.addEventListener("DOMContentLoaded", loadEnquiries);
