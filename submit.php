@@ -1,35 +1,19 @@
 <?php
-// Database connection details
-$servername = "sql311.infinityfree.com"; // Replace with your actual hostname
-$username = "your_db_username";
-$password = "your_db_password";
-$database = "your_db_name";
+require 'db_connect.php'; // Include database connection
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $conn->real_escape_string($_POST['name']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $message = $conn->real_escape_string($_POST['message']);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $sql = "INSERT INTO enquiries (name, email, message) VALUES ('$name', '$email', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Enquiry submitted successfully!'); window.location='index.html';</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 
-// Get form data
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-
-// Prepare SQL statement
-$sql = "INSERT INTO enquiries (name, email, message) VALUES (?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $name, $email, $message);
-
-if ($stmt->execute()) {
-    echo "Enquiry submitted successfully!";
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-// Close connection
-$stmt->close();
 $conn->close();
 ?>
