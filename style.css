@@ -1,65 +1,17 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+/* Ensure the body is not empty */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
 }
 
-/* Form Container */
+/* Make sure the form is visible */
 form {
     width: 400px;
-    background: #f8f8f8;
+    background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 50px auto;
-}
-
-/* Labels */
-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin: 10px 0 5px;
-}
-
-/* Input Fields */
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-/* Textarea */
-textarea {
-    height: 100px;
-    resize: none;
-}
-
-/* Submit Button */
-button {
-    width: 100%;
-    padding: 10px;
-    background: #4CAF50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-button:hover {
-    background: #45a049;
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-    form {
-        width: 90%;
-    }
 }
